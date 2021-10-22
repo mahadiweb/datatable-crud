@@ -29,7 +29,7 @@
        <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-         <table id="example" class="table">
+         <table id="exampletbl" class="table">
           <thead>
             <th>Id</th>
             <th>Name</th>
@@ -138,8 +138,8 @@
               // table.cell(parseInt(trid) - 1,3).data(mobile);
               // table.cell(parseInt(trid) - 1,4).data(city);
               var button =   '<td><a href="javascript:void();" data-id="' +id + '" class="btn btn-info btn-sm editbtn">Edit</a>  <a href="#!" data-bs-toggle="modal" data-id="' +id + '" data-bs-target="#exampleModal" class="btn btn-danger btn-sm">Delete</a></td>';
-              var row = table.row("[id='"+trid+"']");
-              row.row("[id='" + trid + "']").data([id,username,email,mobile,city,button]);
+              var reDataTable = $('#exampletbl').dataTable(); 
+			        reDataTable.fnDraw(false);
               $('#exampleModal').modal('hide');
             }
             else
@@ -193,10 +193,8 @@
           status = json.status;
           if(status=='success')
           {
-            //table.fnDeleteRow( table.$('#' + id)[0] );
-             //$("#example tbody").find(id).remove();
-             //table.row($(this).closest("tr")) .remove();
-             $("#"+id).closest('tr').remove();
+             var reDataTable = $('#exampletbl').dataTable(); 
+			       reDataTable.fnDraw(false);
           }
           else
           {
